@@ -106,6 +106,7 @@ create table if not exists public.appointments (
   created_by uuid references public.profiles(id) on delete set null,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
+  unique (establishment_id, id),
   check (scheduled_end > scheduled_start),
   foreign key (establishment_id, patient_id)
     references public.patients(establishment_id, id) on delete restrict,
