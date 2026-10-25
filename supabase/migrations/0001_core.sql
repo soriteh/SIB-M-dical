@@ -267,7 +267,7 @@ using (
   public.has_clinic_role(
     establishment_id,
     array['super_admin','clinic_admin','doctor','nurse','receptionist',
-    'lab_technician','pharmacist','cashier','accountant','radiologist','auditor']::public.app_role[]
+    'lab_technician','pharmacist','radiologist']::public.app_role[]
   )
 );
 
