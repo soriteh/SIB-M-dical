@@ -53,3 +53,15 @@ Ne pas appliquer de migration non vérifiée à une base contenant des données 
 ## Sécurité
 
 Les données de santé sont sensibles. Compléter et tester les politiques RLS, la séparation par établissement, l'audit, les sauvegardes et la synchronisation avant toute utilisation avec des patients réels. Le mode hors ligne ne confirme pas les paiements ou prescriptions tant que le serveur ne les a pas validés.
+
+## Déploiement GitHub Pages
+
+Le workflow `.github/workflows/pages.yml` construit et publie l'application sur GitHub Pages à chaque push sur `main`. Dans GitHub, ouvrir **Settings → Pages** et choisir **GitHub Actions** comme source de déploiement.
+
+Configurer ensuite :
+- Repository variable `VITE_SUPABASE_URL` : URL du projet Supabase de développement/production.
+- Repository secret `VITE_SUPABASE_ANON_KEY` : clé publique/publishable Supabase. Ne jamais utiliser la clé `service_role`.
+
+Sans ces paramètres, le site peut être publié mais l'authentification Supabase ne sera pas disponible. Les variables Vite sont incorporées au bundle public : seules des clés publiques conçues pour le navigateur peuvent y être utilisées, et RLS doit protéger les données.
+
+GitHub Pages héberge uniquement l'interface statique. Il ne déploie pas la base Supabase et n'active pas les migrations SQL. Appliquer et tester les migrations séparément dans un projet Supabase, puis configurer les URL de redirection Auth pour l'URL GitHub Pages.
