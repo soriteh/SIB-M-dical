@@ -4,7 +4,7 @@ create extension if not exists pgcrypto;
 do $$ begin
   create type public.app_role as enum (
     'super_admin','clinic_admin','doctor','nurse','receptionist',
-    'lab_technician','pharmacist','cashier','accountant','radiologist','auditor'
+    'lab_technician','pharmacist','radiologist'
   );
 exception when duplicate_object then null; end $$;
 
@@ -247,7 +247,7 @@ using (
   public.has_clinic_role(
     id,
     array['super_admin','clinic_admin','doctor','nurse','receptionist',
-    'lab_technician','pharmacist','cashier','accountant','radiologist','auditor']::public.app_role[]
+    'lab_technician','pharmacist','radiologist']::public.app_role[]
   )
 );
 
