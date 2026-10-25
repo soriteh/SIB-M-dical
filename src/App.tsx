@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import type { Session } from "@supabase/supabase-js";
 import {
-  Activity, CalendarDays, Check, ChevronDown, ClipboardList, Cloud, FilePlus2,
+  Activity, CalendarDays, Check, ChevronDown, Cloud, FilePlus2,
   HeartPulse, LayoutDashboard, LogOut, Plus, Search, ShieldCheck, Users,
   Wifi, WifiOff, X
 } from "lucide-react";
